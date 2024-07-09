@@ -1,0 +1,93 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url("img/delivery3.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Prevent scrolling */
+    }
+    
+    header {
+    margin: 0;
+    padding: 0;
+    }
+    
+    .header {
+    overflow: hidden;
+    padding: 0px 20px;
+    }
+    
+    .header img{
+    width: 100px;
+    }
+    
+    a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+    }
+    
+    a.logo {
+    padding: 0;
+    }
+    
+    .logo {
+    display: flex;
+    height: 100%;
+    align-items: left;
+    }
+    
+    a:hover {
+    color: #C0C0C0;
+    transition: 0.4s;
+    transform: scale(1.05);
+    }
+    
+    .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    }
+    
+    .delivery-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    
+    .location-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+    
+    .location-box i {
+    font-size: 24px;
+    margin-right: 10px;
+    }
+    
+    input, select, button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    }
+
+    
+    input[type="text"] {
+        min-width: 400px;
+    }

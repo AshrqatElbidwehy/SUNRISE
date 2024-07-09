@@ -1,0 +1,44 @@
+﻿@model SUNRISE.Models.Chef
+
+@{
+    ViewData["Title"] = "CreateChef";
+}
+
+<div class="story">
+    <div class="story-box">
+        <h2 class="heading-1">Grow your business online with Sunrise Today!</h2>
+        <h2 class="heading-2">
+            Join the kitchen team to reach more customers,
+            earn more money, and grow your business online. <br>Your success story begins here.
+        </h2>
+    </div>
+
+
+    <div class="container">
+        <div class="login-box">
+            <h1>Register</h1>
+            <form asp-action="CreateChef" method="post">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" id="first_name" placeholder="Enter your first name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                <label asp-for="LastName" ></label>
+                <input asp-for="LastName" id="last_name" placeholder="Enter your last name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+
+                <label asp-for="PhoneNumber" ></label>
+                <input asp-for="PhoneNumber" id="phone" placeholder="Enter your phone number" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                <label asp-for="Email" ></label>
+                <input asp-for="Email" id="business_email" placeholder="Enter your business email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</div>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+

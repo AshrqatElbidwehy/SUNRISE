@@ -1,0 +1,345 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUserEntity> userManager
+@{
+    var user = await userManager.GetUserAsync(this.User);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    @if (ViewData["page"] == "Menu")
+    {
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <title>menu Page</title>
+        <link rel="stylesheet" href="/assets/css/general.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+    }
+    else if (ViewData["page"] == "OurStory")
+    {
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <link rel="stylesheet" href="/assets/css/general.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <title>Our Story</title>
+    }
+    else if (ViewData["page"] == "ContactUS")
+    {
+        <meta charset="UTF-8">
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <title>Contact us Page</title>
+        <link rel="stylesheet" href="/assets/css/contact_us.css">
+    }
+    else if (ViewData["page"] == "Review")
+    {
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <title>reviews Page</title>
+        <link rel="stylesheet" href="/assets/css/general.css">
+        <link rel="stylesheet" href="/assets/css/style.css" />
+    }
+    else if (ViewData["page"] == "HowItWorks")
+    {
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <title>Contact us Page</title>
+        <link rel="stylesheet" href="/assets/css/general.css">
+        <link rel="stylesheet" href="/assets/css/style.css" />
+    }
+    else if (ViewData["page"] == "CreateChef")
+    {
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <title>Join the kitchen team</title>
+        <link rel="stylesheet" href="/assets/css/partner.css">
+    }
+    else if (ViewData["page"] == "WlcomeHome")
+    {
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <link rel="stylesheet" href="/assets/css/welcome_page.css">
+        <title>Welcome Page</title>
+    }
+    else if (ViewData["page"] == "Index")
+    {
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <link rel="stylesheet" href="/assets/css/general.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+    }
+    else if (ViewData["page"] == "Register")
+    {
+        <title>Registration Page</title>
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <link rel="stylesheet" href="~/assets/css/login.css">
+        <link rel="stylesheet" href="~/assets/css/general.css" />
+    }
+    else if (ViewData["page"] == "Login")
+    {
+        <title>Login Page</title>
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <link rel="stylesheet" href="/assets/css/login.css">
+        <link rel="stylesheet" href="/assets/css/general.css" />
+    }
+    else
+    {
+        <title>@ViewData["Title"] - SUNRISE</title>
+        <link rel="icon" href="/assets/img/Logo2-small.png" />
+        <link rel="stylesheet" href="/assets/css/general.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+    }
+</head>
+<body>
+    @{
+
+    }
+    @if (ViewData["RemoveHeader"] is null)
+    {
+        if (ViewData["page"] != "Index")
+        {
+            <header class="header">
+                <a href="/index">
+                    <img class="logo" href="/index" src="/assets/img/Logo2-removebg.png" />
+                </a>
+
+                <nav class="main-nav">
+                    <ul class="main-nav-list">
+                        <li><a class="main-nav-link" href="/GetMenu">Menu</a></li>
+                        <li><a class="main-nav-link" href="/ShowHowItWorks">How it works</a></li>
+                        <li><a class="main-nav-link" href="/GetReviews">Reviews</a></li>
+                        <li><a class="main-nav-link" href="/ShowOurStory">Our Story</a></li>
+                        <li><a class="main-nav-link" href="/CreateChef">Enlist as a Chef</a></li>
+                        <li><a class="main-nav-link" href="/ContactUs">Contact Us</a></li>
+
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                        <form style="display:list-item;" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                            <button class="main-nav-link nav-cta"  type="submit">Logout</button>
+                        </form>
+                        }
+                        else
+                        {
+                        <li><a class="main-nav-link nav-cta" href="/Identity/Account/Register">Register</a></li>
+                        }
+                    </ul>
+                </nav>
+            </header>
+            @RenderBody()
+
+            <footer class="footer">
+                <div class="container grid grid--footer">
+                    <div class="logo-col">
+                        <a href="#" class="footer-logo">
+                            <img class="logo" src="/assets/img/Logo2-removebg.png" />
+                        </a>
+                        <p class="copyright">
+                            Made with love by
+                            Ashrqat & Yomna
+                        </p>
+                    </div>
+
+                    <div class="address-col">
+                        <p class="footer-heading">Contact us</p>
+                        <address class="contacts">
+                            <p class="address">
+                                ITI, Smart Village, 6th of Oct, Giza
+                            </p>
+                            <p>
+                                <a class="footer-link">+2 07775000</a><br />
+                                <a class="footer-link" href="mailto:customer_support@Sunrisetoday.com">customer_support@Sunrisetoday.com</a>
+                            </p>
+                        </address>
+                    </div>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Account</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="login.html">Create account</a></li>
+                            <li><a class="footer-link" href="login.html">Sign in</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Company</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="story.html">About Sunrise today</a></li>
+                            <li><a class="footer-link" href="partner.html">Become a Cooking partner</a></li>
+                            <li><a class="footer-link" href="partner.html">Careers</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Resources</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="menu.html">Recipe directory </a></li>
+                            <li><a class="footer-link" href="contact_us.html">Help center</a></li>
+                            <li><a class="footer-link" href="#">Privacy & terms</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </footer>
+        }
+        else if (ViewData["page"] == "Index")
+        {
+            <header class="header">
+                <a href="/WlcomeHome">
+                    <img class="logo" href="/WlcomeHome" src="/assets/img/Logo2-removebg.png" />
+                </a>
+
+                <nav class="main-nav">
+                    <ul class="main-nav-list">
+                        <li><a class="main-nav-link" href="/GetMenu">Menu</a></li>
+                        <li><a class="main-nav-link" href="/ShowHowItWorks">How it works</a></li>
+                        <li><a class="main-nav-link" href="/GetReviews">Reviews</a></li>
+                        <li><a class="main-nav-link" href="/ShowOurStory">Our Story</a></li>
+                        <li><a class="main-nav-link" href="/CreateChef">Enlist as a Chef</a></li>
+                        <li><a class="main-nav-link" href="/ContactUs">Contact Us</a></li>
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                        <form style="display:list-item;" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                            <button class="main-nav-link nav-cta" type="submit">Logout</button>
+                        </form>
+                        }
+                        else
+                        {
+                        <li><a class="main-nav-link nav-cta" href="/Identity/Account/Register">Register</a></li>
+                        }
+                    </ul>
+                </nav>
+            </header>
+            @RenderBody()
+
+            <footer class="footer">
+                <div class="container grid grid--footer">
+                    <div class="logo-col">
+                        <a href="#" class="footer-logo">
+                            <img class="logo" src="/assets/img/Logo2-removebg.png" />
+                        </a>
+                        <p class="copyright">
+                            Made with love by
+                            Ashrqat & Yomna
+                        </p>
+                    </div>
+
+                    <div class="address-col">
+                        <p class="footer-heading">Contact us</p>
+                        <address class="contacts">
+                            <p class="address">
+                                ITI, Smart Village, 6th of Oct, Giza
+                            </p>
+                            <p>
+                                <a class="footer-link">+2 07775000</a><br />
+                                <a class="footer-link" href="mailto:customer_support@Sunrisetoday.com">customer_support@Sunrisetoday.com</a>
+                            </p>
+                        </address>
+                    </div>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Account</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="/Identity/Account/Register">Create account</a></li>
+                            <li><a class="footer-link" href="/Identity/Account/Login">Sign in</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Company</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="/ShowOurStory">About Sunrise today</a></li>
+                            <li><a class="footer-link" href="/CreateChef">Become a Cooking partner</a></li>
+                            <li><a class="footer-link" href="#">Careers</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Resources</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="#">Recipe directory </a></li>
+                            <li><a class="footer-link" href="#">Help center</a></li>
+                            <li><a class="footer-link" href="#">Privacy & terms</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </footer>
+        }
+    }
+    else
+    {
+        if (ViewData["page"] == "WlcomeHome")
+        {
+            @RenderBody()
+        }
+        else if (ViewData["page"] == "Register" || ViewData["page"] == "Login")
+        {
+            <header class="header1">
+                <a href="/index">
+                    <img src="/assets/img/Logo2-small.png" class="logo1">
+                </a>
+            </header>
+            @RenderBody()
+        }
+        else
+        {
+            <header>
+                <div class="header">
+                    <a href="/index" class="logo">
+                        <img src="/assets/img/Logo2-small.png">
+                    </a>
+                </div>
+            </header>
+            @RenderBody()
+
+            <footer class="footer">
+                <div class="container grid grid--footer">
+                    <div class="logo-col">
+                        <a href="#" class="footer-logo">
+                            <img class="logo" src="/assets/img/Logo2-removebg.png" />
+                        </a>
+                        <p class="copyright">
+                            Made with love by
+                            Ashrqat & Yomna
+                        </p>
+                    </div>
+
+                    <div class="address-col">
+                        <p class="footer-heading">Contact us</p>
+                        <address class="contacts">
+                            <p class="address">
+                                ITI, Smart Village, 6th of Oct, Giza
+                            </p>
+                            <p>
+                                <a class="footer-link">+2 07775000</a><br />
+                                <a class="footer-link" href="mailto:customer_support@Sunrisetoday.com">customer_support@Sunrisetoday.com</a>
+                            </p>
+                        </address>
+                    </div>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Account</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="/Identity/Account/Register">Create account</a></li>
+                            <li><a class="footer-link" href="/Identity/Account/Login">Sign in</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Company</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="/ShowOurStory">About Sunrise today</a></li>
+                            <li><a class="footer-link" href="/CreateChef">Become a Cooking partner</a></li>
+                            <li><a class="footer-link" href="#">Careers</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="nav-col">
+                        <p class="footer-heading">Resources</p>
+                        <ul class="footer-nav">
+                            <li><a class="footer-link" href="#">Recipe directory </a></li>
+                            <li><a class="footer-link" href="#">Help center</a></li>
+                            <li><a class="footer-link" href="#">Privacy & terms</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </footer>
+        }
+    }
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

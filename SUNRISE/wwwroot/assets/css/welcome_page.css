@@ -1,0 +1,41 @@
+body, html {
+    height: 100%;
+  }
+  
+  .welcome-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Move the button to the bottom */
+    align-items: center; /* Center horizontally */
+    overflow: hidden; /* Ensure the image doesn't overflow */
+  }
+  
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .enter-button {
+    margin-bottom: 45px; /* Adjust as needed */
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #e67e22;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px; /* Round edges */
+    transition: background-color 0.3s ease; /* Add hover animation */
+  }
+  
+  .enter-button:hover {
+    background-color: #cf711f; /* Change color on hover */
+  }
+  

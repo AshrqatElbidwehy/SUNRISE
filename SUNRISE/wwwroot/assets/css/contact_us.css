@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("/assets/img/contact_us_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+overflow: hidden; /* Prevent scrolling */	
+}
+
+header {
+  margin: 0;
+  color: white;  
+  padding: 0;
+}
+
+.header {
+  overflow: hidden;
+  padding: 0px 20px;
+}
+
+.header img{
+  width: 100px;
+}
+
+.header a {
+  float: left;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  padding: 0;
+}
+
+.header logo {
+  display: flex;
+  height: 100%;
+  align-items: left;
+}
+
+.header a:hover {
+  color: #C0C0C0;
+  transition: 0.4s;
+  transform: scale(1.05);
+}
+
+.card-container {
+  display: flex;
+  margin-top: 1vh;
+  justify-content: space-evenly; /* Adjust as needed */
+}
+
+.card {
+  border-radius: 15px;
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+  margin: 20px;
+  transition: 1s;
+  backdrop-filter: blur(5px);
+
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+}
+
+.card-icon {
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(180, 86, 31); 
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: auto; /* Align to the bottom */
+}
+
+.button:hover {
+  background-color: rgb(136, 65, 24); 
+  cursor: pointer;
+}
